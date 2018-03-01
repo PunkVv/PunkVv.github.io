@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-su.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-su.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-su.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="[ECMAScript 6 入门][ECMAScript]读书笔记。[ECMAScript]: http://es6.ruanyifeng.com/">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAScript 6 学习笔记">
+<meta property="og:url" content="http://llovesu.com/2017/10/30/ecmascript-6学习笔记/index.html">
+<meta property="og:site_name" content="llovesu">
+<meta property="og:description" content="[ECMAScript 6 入门][ECMAScript]读书笔记。[ECMAScript]: http://es6.ruanyifeng.com/">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-01T03:11:00.824Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ECMAScript 6 学习笔记">
+<meta name="twitter:description" content="[ECMAScript 6 入门][ECMAScript]读书笔记。[ECMAScript]: http://es6.ruanyifeng.com/">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'YLRO4P4SO6',
+      apiKey: 'df96481d4e9313900743e1d13173bb2a',
+      indexName: 'punkvv',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"搜索","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://llovesu.com/2017/10/30/ecmascript-6学习笔记/"/>
+
+
+
+
+
+  <title>ECMAScript 6 学习笔记 | llovesu</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e91c7fbdbdb35d14ebdfda91b70ff0bb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">llovesu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">My Baby Su</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://llovesu.com/2017/10/30/ecmascript-6学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="PunkVv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/punkvv.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="llovesu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ECMAScript 6 学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-30T17:31:08+08:00">
+                2017-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/30/ecmascript-6学习笔记/" class="leancloud_visitors" data-flag-title="ECMAScript 6 学习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[ECMAScript 6 入门][ECMAScript]读书笔记。<br>[ECMAScript]: <a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">http://es6.ruanyifeng.com/</a><br><a id="more"></a></p>
+<h2 id="let-和-const"><a href="#let-和-const" class="headerlink" title="let 和 const"></a>let 和 const</h2><ol>
+<li><code>let</code> 用来声明变量，<code>let</code> 作用域不同于 <code>var</code> ,只在它所在的代码块有效。</li>
+<li><code>let</code> 不会出现变量提升。在代码块内，使用 <code>let</code> 命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”</li>
+<li>不允许重复声明, <code>let</code> 不允许在相同作用域内，重复声明同一个变量。</li>
+<li><code>const</code> 声明一个只读的常量。一旦声明，常量的值就不能改变。</li>
+</ol>
+<h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ol>
+<li>数组的解构赋值<br>允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（<code>Destructuring</code>）。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a,b,c] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果解构不成功，变量的值就等于 <code>undefined</code>。<br>事实上，只要某种数据结构具有 <code>Iterator</code> 接口，都可以采用数组形式的解构赋值。</p>
+<ol>
+<li>默认值<br>解构赋值允许指定默认值。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [foo = <span class="literal">true</span>] = []</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>内部使用严格相等运算符 <code>===</code>，判断一个位置是否有值。所以，如果一个数组成员不严格等于 <code>undefined</code>，默认值是不会生效的。</p>
+<ol>
+<li>对象的解构赋值<br>对像的解构与数组有一个重要的不同。数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，变量必须与属性同名，才能取到正确的值。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; bar, foo&#125; = &#123;<span class="attr">foo</span>: <span class="string">'aaa'</span>, <span class="attr">bar</span>: <span class="string">'bbb'</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。</p>
+<ol>
+<li><p>字符串的解构赋值<br>字符串也可以解构赋值。这是因为此时，字符串被转换成了一个类似数组的对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a, b, c, d, e] = <span class="string">'hello'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数值和布尔值得解构赋值<br>解构赋值时，如果等号右边是数值和布尔值，则会先转为对象。<br>解构赋值的规则是，只要等号右边的值不是对象或数组，就先将其转为对象。</p>
+</li>
+<li><p>函数参数的解构赋值<br>函数的参数也可以使用解构赋值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">[x, y]</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add([<span class="number">1</span>,<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h2><ol>
+<li><p>字符的 Unicode 表示法<br>JavaScript 允许采用<code>\uxxxx</code>形式表示一个字符，其中<code>xxxx</code>表示字符的 Unicode 码点。<br>但是，这种表示法只限于码点在<code>\u0000~\uFFFF</code>之间的字符。超出这个范围的字符，必须用两个双字节的形式表示。<br>ES6 对这一点做出了改进，只要将码点放入大括号，就能正确解读该字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'\u&#123;20BB7&#125;'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>codePointAt()<br>JavaScript 内部，字符以 UTF-16 的格式储存，每个字符固定为<code>2</code>个字节。对于那些需要<code>4</code>个字节储存的字符（Unicode 码点大于<code>0xFFFF</code>的字符），JavaScript 会认为它们是两个字符。<br>ES6 提供了 <code>codePoinAt</code> 方法，能够正确处理4个字节储存的字符，返回一个字符的码点。</p>
+</li>
+<li><p>String.fromCodePoint()<br>ES6 提供了<code>String.fromCodePoint</code>方法，可以识别大于<code>0xFFFF</code>的字符，在作用上，正好与<code>codePointAt</code>方法相反。</p>
+</li>
+<li><p>字符串的遍历器接口<br>ES6 为字符串添加了遍历器接口，使得字符串可以被<code>for...of</code>循环遍历。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> codePoint <span class="keyword">of</span> <span class="string">'foo'</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(codePoint)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>除了遍历字符串，这个遍历器最大的优点是可以识别大于<code>0xFFFF</code>的码点，传统的<code>for</code>循环无法识别这样的码点。</p>
+<ol>
+<li><p>at()<br>ES5 对字符串对象提供<code>charAt</code>方法，返回字符串给定位置的字符。该方法不能识别码点大于<code>0xFFFF</code>的字符。<br>目前，有一个提案，提出字符串实例的at方法，可以识别 Unicode 编号大于0xFFFF的字符，返回正确的字符。</p>
+</li>
+<li><p>normalize()<br>ES6 提供字符串实例的<code>normalize()</code>方法，用来将字符的不同表示方法统一为同样的形式，这称为 Unicode 正规化。</p>
+</li>
+<li><p>includes(),startsWith(),endsWith()<br>传统上，JavaScript 只有<code>indexOf</code>方法，可以用来确定一个字符串是否包含在另一个字符串中。ES6 又提供了三种新方法。</p>
+<ul>
+<li>includes():返回布尔值，表示是否找到了参数字符串。</li>
+<li>startsWith():返回布尔值，表示参数字符串是否在原字符串的头部。</li>
+<li>endsWith():返回布尔值，表示参数字符串是否在原字符串的尾部。<br>这三个方法都支持第二个参数，表示开始搜索的位置。</li>
+</ul>
+</li>
+<li><p>repeat()<br><code>repeat</code>方法返回一个新字符串，表示将原字符串重复<code>n</code>次。</p>
+</li>
+<li><p>padStart(),padEnd()<br>ES2017 引入了字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。<code>padStart()</code>用于头部补全，<code>padEnd()</code>用于尾部补全。<br>一共接受两个参数，第一个参数用来指定字符串的最小长度，第二个参数是用来补全的字符串。</p>
+</li>
+<li><p>模板字符串<br>模板字符串是增强版的字符串，用反引号 (`) 标识。它可以当做普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。模板字符串中嵌入变量，需要将变量名写在 <code>${}</code>之中。</p>
+</li>
+</ol>
+<h2 id="正则的扩展"><a href="#正则的扩展" class="headerlink" title="正则的扩展"></a>正则的扩展</h2><ol>
+<li>RegExp 构造函数<br>如果 <code>RegExp</code> 构造函数第一个参数是一个正则对象，那么可以使用第二个参数指定修饰符。而且，返回的正则表达式会忽略原有的正则表达式的修饰符，只使用新指定的修饰符。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/abc/ig</span>,<span class="string">'i'</span>).flags</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>上面代码中，原有正则对象修饰符时 <code>ig</code>,它会被第二个参数 <code>i</code> 覆盖。</p>
+<ol>
+<li><p>字符串的正则方法<br>ES6 将所有与正则相关的方法，全都定义在 <code>RegExp</code> 对象上。</p>
+</li>
+<li><p>u 修饰符<br>ES6 对正则表达式添加了 <code>u</code> 修饰符，含义为 <code>Unicode模式</code>，用来正确处理大于 <code>\uFFFF</code> 的 Unicode 字符。</p>
+</li>
+<li><p>y 修饰符<br><code>y</code> 修饰符的作用与 <code>g</code> 修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，<code>g</code> 修饰符只要剩余位置中存在匹配就可，而 <code>y</code> 修饰符确保匹配必须从剩余的第一个位置开始，这也就是“粘连”的涵义。</p>
+</li>
+<li><p>sticky 属性<br>与 <code>y</code> 修饰符相匹配，ES6 的正则对象多了 <code>sticky</code> 属性，表示是否设置了 <code>y</code> 修饰符。</p>
+</li>
+<li><p>flags 属性<br>ES6 为正则表达式新增了 <code>flags</code> 属性，会返回正则表达式的修饰符。</p>
+</li>
+</ol>
+<h2 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h2><ol>
+<li><p>二进制和八进制表示法<br>ES6 提供了二进制和八进制数值的新写法，分别用前缀 <code>0b</code> （或 <code>0B</code>）和 <code>0o</code> （或 <code>0O</code>）表示。如果要将 <code>0b</code> 和 <code>0o</code> 前缀的字符串数值转为十进制，要使用 <code>Number</code> 方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="string">'0b111'</span>) <span class="comment">// 7</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'0o10'</span>)  <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Number.isFinite()，Number.isNaN()<br><code>Number.isFinite()</code> 用来检查一个数值是否为有限的 （finite）。<br><code>Number.isNaN()</code> 用来检查一个值是否为 <code>NaN</code>。</p>
+</li>
+<li><p>Number.parseInt()，Number.parseFloat()<br>ES6 将全局方法 <code>parseInt()</code> 和 <code>parseFloat()</code>，移植到 <code>Number</code> 对象上面，行为完全保持不变。</p>
+</li>
+<li><p>Number.isInteger()<br><code>Number.isInteger()</code> 用来判断一个值是否为整数。</p>
+</li>
+<li><p>Number.EPSILON<br>表示 1 与大于 1 的最小浮点数之间的差。实质是一个可以接受的最小误差范围。</p>
+</li>
+<li><p>安全整数和 Number.isSafeInteger()</p>
+</li>
+<li>Math 对象的扩展</li>
+</ol>
+<h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h2><ol>
+<li>函数参数的默认值</li>
+</ol>
+<ul>
+<li>函数不能有同名参数。参数默认值是惰性求值的。</li>
+<li>与解构赋值默认值结合使用<br>想看参数有没有默认值，再看对象解构赋值的默认值。</li>
+<li>参数默认值的位置<br>最好在函数的尾参数设置默认值。</li>
+<li>函数的 length 属性<br>指定了默认值以后，函数的 <code>length</code> 属性，将返回没有指定默认值的参数个数。</li>
+<li>作用域<br>一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域 <code>context</code>。等到初始化结束，这个作用域就会消失。</li>
+</ul>
+<ol>
+<li><p>rest 参数<br>ES6 引入 <code>rest</code> 参数，形式为 <code>...变量名</code>，用于获取函数的多余参数。<code>rest</code> 参数之后不能再有其他的参数。函数的 <code>lenght</code> 属性，不包括 <code>rest</code>参数。</p>
+</li>
+<li><p>严格模式<br>只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错。</p>
+</li>
+<li><p>name 属性<br>函数的 <code>name</code> 属性，返回该函数的函数名。</p>
+</li>
+<li><p>箭头函数</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    PunkVv
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://llovesu.com/2017/10/30/ecmascript-6学习笔记/" title="ECMAScript 6 学习笔记">http://llovesu.com/2017/10/30/ecmascript-6学习笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/27/think/" rel="next" title="Think">
+                <i class="fa fa-chevron-left"></i> Think
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/31/web-基础/" rel="prev" title="Web 基础">
+                Web 基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/punkvv.jpg"
+                alt="PunkVv" />
+            
+              <p class="site-author-name" itemprop="name">PunkVv</p>
+              <p class="site-description motion-element" itemprop="description">自己看的懂</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/punkvv" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:740087240@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/5224822167" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/punk-punk-33/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#let-和-const"><span class="nav-number">1.</span> <span class="nav-text">let 和 const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的解构赋值"><span class="nav-number">2.</span> <span class="nav-text">变量的解构赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的扩展"><span class="nav-number">3.</span> <span class="nav-text">字符串的扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则的扩展"><span class="nav-number">4.</span> <span class="nav-text">正则的扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值的扩展"><span class="nav-number">5.</span> <span class="nav-text">数值的扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的扩展"><span class="nav-number">6.</span> <span class="nav-text">函数的扩展</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PunkVv</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("yWLS7rrm0mjPNiKgXkepX42d-gzGzoHsz", "FfFtJHN0ChllGTXafG9UDbIc");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
