@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="llovesu">
 <meta property="og:description" content="Docker for Windows PHP环境搭建">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-02T07:09:12.350Z">
+<meta property="og:updated_time" content="2018-03-02T07:10:51.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker for Windows PHP环境搭建">
 <meta name="twitter:description" content="Docker for Windows PHP环境搭建">
@@ -356,11 +356,10 @@
         <p>Docker for Windows PHP环境搭建</p>
 <a id="more"></a>
 <ol>
-<li>启用 Hyper-V<br>以管理员身份打开 cmd 输入命令：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V</span><br></pre></td></tr></table></figure>
+<li><p>启用 Hyper-V<br>以管理员身份打开 cmd 输入命令：</p>
+<pre><code>DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
+</code></pre><p><a href="https://docs.microsoft.com/zh-cn/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v</a>  </p>
 </li>
-</ol>
-<p><a href="https://docs.microsoft.com/zh-cn/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v</a>  </p>
-<ol>
 <li><p>安装 Docker for Windows<br>下载：<a href="https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows" target="_blank" rel="noopener">https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows</a></p>
 </li>
 <li><p>配置共享驱动 Shared Drives<br>打开 Setttings 选择 Shared Drives 选择需要共享的磁盘。</p>
