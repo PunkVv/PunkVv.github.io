@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="llovesu">
 <meta property="og:description" content="ThinkPHP5 部署到 Linux 上的 lnmp 环境">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-14T07:27:49.208Z">
+<meta property="og:updated_time" content="2018-05-14T07:33:48.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ThinkPHP5 部署到 Linux 上的 lnmp 环境">
 <meta name="twitter:description" content="ThinkPHP5 部署到 Linux 上的 lnmp 环境">
@@ -358,7 +358,7 @@
 <h2 id="open-basedir"><a href="#open-basedir" class="headerlink" title="open_basedir"></a>open_basedir</h2><p>部分 Linux 主机设置了 open_basedir（可将用户访问文件的活动范围限制在指定的区域，通常是入口文件根目录的路径） 选项，导致 ThinkPHP5 访问白屏或者报错</p>
 <p>打开项目根目录下找到 user.ini 文件，把<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open_basedir=/home/wwwroot/www.thinkphp.cn/public/:/tmp/:/proc/</span><br></pre></td></tr></table></figure></p>
 <p>修改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open_basedir=/home/wwwroot/www.thinkphp.cn/:/tmp/:/proc/</span><br></pre></td></tr></table></figure></p>
-<h2 id="URL重写"><a href="#URL重写" class="headerlink" title="URL重写"></a>URL重写</h2><p>在项目 nginx 配置文件添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    if (!-e $request_filename)&#123;</span><br><span class="line">        rewrite  ^/(.*)$  /youdomain/index.php?s=/$1  last;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="URL重写"><a href="#URL重写" class="headerlink" title="URL重写"></a>URL重写</h2><p>在项目 nginx 配置文件添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    if (!-e $request_filename)&#123;</span><br><span class="line">        rewrite  ^/(.*)$  /index.php?s=/$1  last;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
